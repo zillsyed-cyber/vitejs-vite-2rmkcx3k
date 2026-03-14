@@ -308,7 +308,7 @@ export default function App() {
             <p style={{ color: "#6B6F7E", fontSize: 14, marginBottom: 36 }}>Just the basics — Alex will uncover the rest in conversation.</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               {[
-                { label: "Company Name", val: companyName, set: setCompanyName, ph: "e.g. Real Living Estates Ltd" },
+                { label: "Company Name", val: companyName, set: setCompanyName, ph: "e.g. Company Name" },
                 { label: "City / Location", val: location, set: setLocation, ph: "e.g. Calgary, AB" },
                 { label: "One Line About Them (optional)", val: desc, set: setDesc, ph: "e.g. Full-service firm est. 2018" },
               ].map((f) => (
