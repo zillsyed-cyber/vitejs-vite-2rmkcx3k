@@ -266,7 +266,7 @@ export default function App() {
         <div style={{ maxWidth: 920, margin: "0 auto", padding: "48px 24px" }}>
           <div className="fade-up" style={{ textAlign: "center", marginBottom: 48 }}>
             <div style={S.tag}>AI Strategy Platform</div>
-            <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 42, fontWeight: 600, lineHeight: 1.15, marginBottom: 14 }}>
+            <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 42, fontWeight: 600, lineHeight: 1.15, marginBottom: 14, color: "#E8E3DA" }}>
               What industry are<br />you working with?
             </h1>
             <p style={{ color: "#6B6F7E", fontSize: 15, lineHeight: 1.7, maxWidth: 420, margin: "0 auto" }}>
@@ -304,7 +304,7 @@ export default function App() {
           <button className="btn-gh" style={S.btnGhost} onClick={() => setScreen("industry")}>← Back</button>
           <div className="fade-up" style={{ marginTop: 40 }}>
             <div style={S.tag}>{selectedIndustry?.label}</div>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 34, fontWeight: 600, marginBottom: 8 }}>Tell us about the business</h2>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 34, fontWeight: 600, marginBottom: 8, color: "#E8E3DA" }}>Tell us about the business</h2>
             <p style={{ color: "#6B6F7E", fontSize: 14, marginBottom: 36 }}>Just the basics — Alex will uncover the rest in conversation.</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               {[
