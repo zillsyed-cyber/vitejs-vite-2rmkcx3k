@@ -199,8 +199,35 @@ const [phone, setPhone] = useState("");
       });
       const data = await res.json();
       const raw = data.content.map((b: { text?: string }) => b.text || "").join("").replace(/```json|```/g, "").trim();
-      setSummary(JSON.parse(raw));
-      setScreen("report");
+      
+      const parsed = JSON.parse(raw);
+setSummary(parsed);
+setScreen("report");
+
+// Send to GHL
+const transcript = messages.map((m: Message) => `${m.role === "assistant" ? "Alex" : companyName}: ${m.content}`).join("\n\n");
+await fetch("https://services.leadconnectorhq.com/hooks/KvbJzr19fYcH0ST9jNnq/webhook-trigger/e3a50f91-86bc-45ae-924c-031d50b8c66e", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    full_name: fullName,
+    email: email,
+    phone: phone,
+    company: companyName,
+    location: location,
+    industry: selectedIndustry?.label,
+    date: new Date().toLocaleDateString(),
+    usp: parsed.usp,
+    icp_primary: parsed.icp_primary,
+    icp_secondary: parsed.icp_secondary,
+    pain_points: (parsed.core_pain_points || []).join(", "),
+    quick_wins: (parsed.quick_wins || []).join(", "),
+    growth_goals: parsed.growth_goals,
+    recommended_focus: parsed.recommended_focus,
+    note: `ALEX STRATEGY SESSION\nCompany: ${companyName}\nIndustry: ${selectedIndustry?.label}\nLocation: ${location}\nDate: ${new Date().toLocaleDateString()}\n\n--- FULL TRANSCRIPT ---\n\n${transcript}\n\n--- INSIGHTS ---\nUSP: ${parsed.usp}\nPrimary ICP: ${parsed.icp_primary}\nQuick Wins: ${(parsed.quick_wins || []).join(", ")}\nPain Points: ${(parsed.core_pain_points || []).join(", ")}`,
+  }),
+});
+      
     } catch {
       setSummary({ error: "Could not generate summary. Please try again." });
     }
