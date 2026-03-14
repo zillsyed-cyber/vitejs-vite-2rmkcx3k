@@ -136,7 +136,7 @@ export default function App() {
         "anthropic-version": "2023-06-01",
         "anthropic-dangerous-direct-browser-access": "true",
       },
-      body: JSON.stringify({ model: "claude-sonnet-4-20250514", max_tokens: 1000, system, messages: msgs }),
+      body: JSON.stringify({ model: "claude-sonnet-4-5", max_tokens: 1000, system, messages: msgs }),
     });
     const data = await res.json();
     return data.content.map((b: { text?: string }) => b.text || "").join("");
@@ -189,7 +189,7 @@ export default function App() {
         method: "POST",
         headers: { "Content-Type": "application/json", "x-api-key": import.meta.env.VITE_ANTHROPIC_API_KEY, "anthropic-version": "2023-06-01", "anthropic-dangerous-direct-browser-access": "true" },
         body: JSON.stringify({
-          model: "claude-sonnet-4-20250514", max_tokens: 1500,
+          model: "claude-sonnet-4-5", max_tokens: 1500,
           messages: [{ role: "user", content: `Based on this strategy session transcript, return ONLY valid JSON (no markdown, no preamble) with these keys: usp (string), icp_primary (string), icp_secondary (string), top_competitors (array of strings max 4), core_pain_points (array of strings max 4), growth_goals (string), brand_personality (string), key_proof_points (array of strings max 3), pricing_positioning (string), recommended_focus (string), quick_wins (array of strings max 3).\n\nTranscript:\n${transcript}` }],
         }),
       });
