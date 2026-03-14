@@ -133,7 +133,7 @@ export default function App() {
       headers: {
         "Content-Type": "application/json",
         "x-api-key": import.meta.env.VITE_ANTHROPIC_API_KEY,
-        "anthropic-dangerous-direct-browser-access": "true",
+        "anthropic-version": "2023-06-01",
         "anthropic-dangerous-direct-browser-access": "true",
       },
       body: JSON.stringify({ model: "claude-sonnet-4-20250514", max_tokens: 1000, system, messages: msgs }),
@@ -187,7 +187,7 @@ export default function App() {
     try {
       const res = await fetch("https://api.anthropic.com/v1/messages", {
         method: "POST",
-        headers: { "Content-Type": "application/json", "x-api-key": import.meta.env.VITE_ANTHROPIC_API_KEY, "anthropic-dangerous-direct-browser-access": "true", "anthropic-dangerous-direct-browser-access": "true" },
+        headers: { "Content-Type": "application/json", "x-api-key": import.meta.env.VITE_ANTHROPIC_API_KEY, "anthropic-version": "2023-06-01", "anthropic-dangerous-direct-browser-access": "true" },
         body: JSON.stringify({
           model: "claude-sonnet-4-20250514", max_tokens: 1500,
           messages: [{ role: "user", content: `Based on this strategy session transcript, return ONLY valid JSON (no markdown, no preamble) with these keys: usp (string), icp_primary (string), icp_secondary (string), top_competitors (array of strings max 4), core_pain_points (array of strings max 4), growth_goals (string), brand_personality (string), key_proof_points (array of strings max 3), pricing_positioning (string), recommended_focus (string), quick_wins (array of strings max 3).\n\nTranscript:\n${transcript}` }],
@@ -266,7 +266,7 @@ export default function App() {
         <div style={{ maxWidth: 920, margin: "0 auto", padding: "48px 24px" }}>
           <div className="fade-up" style={{ textAlign: "center", marginBottom: 48 }}>
             <div style={S.tag}>AI Strategy Platform</div>
-            <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 42, fontWeight: 600, lineHeight: 1.15, marginBottom: 14, color: "#E8E3DA" }}>
+            <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 42, fontWeight: 600, lineHeight: 1.15, marginBottom: 14 }}>
               What industry are<br />you working with?
             </h1>
             <p style={{ color: "#6B6F7E", fontSize: 15, lineHeight: 1.7, maxWidth: 420, margin: "0 auto" }}>
@@ -304,11 +304,11 @@ export default function App() {
           <button className="btn-gh" style={S.btnGhost} onClick={() => setScreen("industry")}>← Back</button>
           <div className="fade-up" style={{ marginTop: 40 }}>
             <div style={S.tag}>{selectedIndustry?.label}</div>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 34, fontWeight: 600, marginBottom: 8, color: "#E8E3DA" }}>Tell us about the business</h2>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 34, fontWeight: 600, marginBottom: 8 }}>Tell us about the business</h2>
             <p style={{ color: "#6B6F7E", fontSize: 14, marginBottom: 36 }}>Just the basics — Alex will uncover the rest in conversation.</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               {[
-                { label: "Company Name", val: companyName, set: setCompanyName, ph: "e.g. Company Name" },
+                { label: "Company Name", val: companyName, set: setCompanyName, ph: "e.g. Real Living Estates Ltd" },
                 { label: "City / Location", val: location, set: setLocation, ph: "e.g. Calgary, AB" },
                 { label: "One Line About Them (optional)", val: desc, set: setDesc, ph: "e.g. Full-service firm est. 2018" },
               ].map((f) => (
