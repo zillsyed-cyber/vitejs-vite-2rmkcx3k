@@ -114,6 +114,9 @@ export default function App() {
   const [companyName, setCompanyName] = useState("");
   const [location, setLocation] = useState("");
   const [desc, setDesc] = useState("");
+  const [fullName, setFullName] = useState("");
+const [email, setEmail] = useState("");
+const [phone, setPhone] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -205,7 +208,7 @@ export default function App() {
   };
 
   const startNew = () => {
-    setScreen("industry"); setSelectedIndustry(null); setCompanyName(""); setLocation(""); setDesc("");
+    setScreen("industry"); setSelectedIndustry(null); setFullName(""); setEmail(""); setPhone(""); setCompanyName(""); setLocation(""); setDesc("");
     setMessages([]); setInput(""); setLoading(false); setSessionDone(false); setSummary(null); setSummaryLoading(false);
   };
 
@@ -309,9 +312,13 @@ export default function App() {
             <p style={{ color: "#6B6F7E", fontSize: 14, marginBottom: 36 }}>Just the basics — Alex will uncover the rest in conversation.</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               {[
-                { label: "Company Name", val: companyName, set: setCompanyName, ph: "e.g. Acme Company Inc." },
-                { label: "City / Location", val: location, set: setLocation, ph: "e.g. Calgary, AB" },
-                { label: "One Line About Them (optional)", val: desc, set: setDesc, ph: "e.g. Full-service firm est. 2018" },
+                { label: "Full Name", val: fullName, set: setFullName, ph: "e.g. John Smith" },
+{ label: "Email Address", val: email, set: setEmail, ph: "e.g. john@company.com" },
+{ label: "Phone Number", val: phone, set: setPhone, ph: "e.g. 403-555-1234" },
+{ label: "Company Name", val: companyName, set: setCompanyName, ph: "e.g. Acme Company Inc." },
+{ label: "City / Location", val: location, set: setLocation, ph: "e.g. Calgary, AB" },
+{ label: "One Line About Them (optional)", val: desc, set: setDesc, ph: "e.g. Full-service firm est. 2018" },
+          
               ].map((f) => (
                 <div key={f.label}>
                   <label style={{ fontSize: 12, color: "#6B6F7E", letterSpacing: "1px", textTransform: "uppercase", display: "block", marginBottom: 8, fontFamily: "'DM Sans', sans-serif" }}>{f.label}</label>
@@ -320,7 +327,7 @@ export default function App() {
                 </div>
               ))}
             </div>
-            <button className="btn-g" style={{ ...S.btnGold, marginTop: 32 }} onClick={() => { if (companyName && location) startChat(); }}>
+            <button className="btn-g" style={{ ...S.btnGold, marginTop: 32 }} onClick={() => { if (fullName && email && phone && companyName && location) startChat(); }}>
               Begin Strategy Session →
             </button>
           </div>
