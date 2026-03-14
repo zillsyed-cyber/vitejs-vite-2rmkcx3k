@@ -265,9 +265,9 @@ export default function App() {
       {/* ── SCREEN: INDUSTRY ── */}
       {screen === "industry" && (
         <div style={{ maxWidth: 920, margin: "0 auto", padding: "48px 24px" }}>
-          <div className="fade-up" style={{ textAlign: "center", marginBottom: 48 }}>
+          <div className="fade-up" style={{ textAlign: "center", marginBottom: 48, color: "#E8E3DA" }}>
             <div style={S.tag}>AI Strategy Platform</div>
-            <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 42, fontWeight: 600, lineHeight: 1.15, marginBottom: 14 }}>
+            <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 42, fontWeight: 600, lineHeight: 1.15, marginBottom: 14, color: "#E8E3DA" }}>
               What industry are<br />you working with?
             </h1>
             <p style={{ color: "#6B6F7E", fontSize: 15, lineHeight: 1.7, maxWidth: 420, margin: "0 auto" }}>
