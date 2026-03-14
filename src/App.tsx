@@ -153,9 +153,10 @@ export default function App() {
     try {
       const reply = await callAPI(getSystemPrompt(), [{ role: "user", content: "Begin the session." }]);
       setMessages([{ role: "assistant", content: reply, time: formatTime() }]);
-    } catch {
-      setMessages([{ role: "assistant", content: "Something went wrong. Please refresh.", time: formatTime() }]);
-    }
+    } catch (err) {
+  console.error("CHAT ERROR:", err);
+  setMessages([{ role: "assistant", content: "Something went wrong. Please refresh.", time: formatTime() }]);
+}
     setLoading(false);
     setTimeout(() => inputRef.current?.focus(), 100);
   };
