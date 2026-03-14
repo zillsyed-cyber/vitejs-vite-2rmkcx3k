@@ -206,7 +206,7 @@ setScreen("report");
 
 // Send to GHL
 const transcript = messages.map((m: Message) => `${m.role === "assistant" ? "Alex" : companyName}: ${m.content}`).join("\n\n");
-await fetch("https://services.leadconnectorhq.com/hooks/KvbJzr19fYcH0ST9jNnq/webhook-trigger/6bfb6be3-d1a3-44a4-8cd2-1eb9c080cfcc", {
+await fetch("https://services.leadconnectorhq.com/hooks/KvbJzr19fYcH0ST9jNnq/webhook-trigger/24b6e160-3b86-4027-ac18-21e409a907d4", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({
